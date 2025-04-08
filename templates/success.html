@@ -1,0 +1,26 @@
+{% extends 'index.html' %}
+
+{% block title %}Upload Success{% endblock %}
+
+{% block content %}
+<div class="containerf">
+     <h1 class="form-title text-center text-success">Upload Success</h1>
+     <h2 class="text-center">List of Uploaded Files</h2>
+    <ul class="list-group">
+                {% for file in model %}
+                    <li class="list-group-item">
+                        <strong>Title:</strong> {{ file.title }} <br>
+                        <strong>File:</strong>
+                        <a href="{{ file.file.url }}" target="_blank" class="btn btn-primary btn-sm">Download</a>
+                <form method="POST" action="{% url 'delete_file' file.id %}" style="display:inline;">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
+                    </li>
+                {% empty %}
+                    <li class="list-group-item">No files uploaded yet.</li>
+                {% endfor %}
+
+            </ul>
+</div>
+{% endblock %}
