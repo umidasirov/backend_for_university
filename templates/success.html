@@ -14,7 +14,7 @@
                         <a href="{{ file.file.url }}" target="_blank" class="btn btn-primary btn-sm">Download</a>
                 <form method="POST" action="{% url 'delete_file' file.id %}" style="display:inline;">
                     {% csrf_token %}
-                    <button type="submit" class="btn btn-danger">Delete</button>
+<!--                    <button type="submit" class="btn btn-danger">Delete</button>-->
                 </form>
                     </li>
                 {% empty %}
